@@ -1,11 +1,11 @@
-package Services;
+package services;
 
-import Dao.Impl.SubjectDaoImpl;
-import Dao.Impl.TeacherDaoImpl;
-import Dao.Impl.TeacherTimeSheetDaoImpl;
-import Entity.Subject;
-import Entity.Teacher;
-import Entity.TeacherTimeSheet;
+import dao.Impl.SubjectDaoImpl;
+import dao.Impl.TeacherDaoImpl;
+import dao.Impl.TeacherTimeSheetDaoImpl;
+import entity.Subject;
+import entity.Teacher;
+import entity.TeacherTimeSheet;
 
 import java.util.ArrayList;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 public class ObjectUtil {
 	public static boolean isEmpty(Object obj) {

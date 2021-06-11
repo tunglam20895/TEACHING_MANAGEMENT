@@ -1,6 +1,4 @@
-package Dao;
-
-import Entity.Teacher;
+package dao;
 
 import java.util.List;
 
@@ -12,7 +10,7 @@ public interface ObjectDao<T>{
 
 	 boolean update(T obj);
 
-	 boolean delete(T obj);
+	 boolean delete(long id);
 
 	 T findById(long id);
 }

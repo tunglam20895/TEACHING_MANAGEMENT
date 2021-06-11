@@ -1,28 +1,30 @@
-package Dao.Impl;
+package dao.Impl;
 
-import Dao.ObjectDao;
-import Entity.Teacher;
-import Utils.HibernateUtil;
+import dao.ObjectDao;
+import utils.HibernateUtil;
+import entity.Subject;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-//@Transactional
-public class TeacherDaoImpl implements ObjectDao<Teacher> {
+@Transactional
+public class SubjectDaoImpl implements ObjectDao<Subject> {
 
-	Logger logger = Logger.getLogger(TeacherDaoImpl.class);
+	Logger logger = Logger.getLogger(SubjectDaoImpl.class);
+
 	Transaction transaction = null;
 
 	@Override
-	public List<Teacher> getAll() {
+	public List<Subject> getAll() {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()){
-			String HQL = "from Teacher";
+			String HQL = "from Subject";
 			Query query = session.createQuery(HQL);
-			List<Teacher> list = query.list();
+			List<Subject> list = query.list();
 			return list;
 		}catch (HibernateException e){
 			logger.error(e);
@@ -31,10 +33,9 @@ public class TeacherDaoImpl implements ObjectDao<Teacher> {
 	}
 
 	@Override
-	public boolean create(Teacher teacher) {
-		try (Session session = HibernateUtil.getSessionFactory().openSession()){
-			session.save(teacher);
-			System.out.println("alo" + teacher);
+	public boolean create(Subject obj) {
+		try(Session session = HibernateUtil.getSessionFactory().openSession()){
+			session.save(obj);
 			return true;
 		}catch (HibernateException e){
 			logger.error(e);
@@ -43,11 +44,11 @@ public class TeacherDaoImpl implements ObjectDao<Teacher> {
 	}
 
 	@Override
-	public boolean update(Teacher teacher) {
+	public boolean update(Subject obj) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()){
 			transaction = session.getTransaction();
 			transaction.begin();
-			session.update(teacher);
+			session.update(obj);
 			transaction.commit();
 			return true;
 		}catch (HibernateException e){
@@ -60,13 +61,16 @@ public class TeacherDaoImpl implements ObjectDao<Teacher> {
 	}
 
 	@Override
-	public boolean delete(Teacher obj) {
+	public boolean delete(long id) {
+		Subject subject  = findById(id);
+		if(subject == null){
+			System.out.println("không tìm thấy môn học");
+		}
 		try (Session session = HibernateUtil.getSessionFactory().openSession()){
 			transaction = session.getTransaction();
 			transaction.begin();
-			session.delete(obj);
+			session.delete(subject);
 			transaction.commit();
-			System.out.println("xóa thành công");
 			return true;
 		}catch (HibernateException e){
 			if(transaction != null){
@@ -78,9 +82,9 @@ public class TeacherDaoImpl implements ObjectDao<Teacher> {
 	}
 
 	@Override
-	public Teacher findById(long id) {
+	public Subject findById(long id) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()){
-			return session.get(Teacher.class,id);
+			return session.get(Subject.class,id);
 		}catch (HibernateException e){
 			logger.error(e);
 		}

@@ -1,8 +1,9 @@
-package Entity;
+package entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -31,7 +32,8 @@ public class Teacher {
 	@Column(name = "TEACHER_LEVEL")
 	private String teacherLevel;
 
-	@OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY)
+	@JsonIgnore
+	@OneToMany(mappedBy = "teacher",fetch = FetchType.EAGER)
 	private Collection<TeacherTimeSheet> teacherTimeSheets;
 
 

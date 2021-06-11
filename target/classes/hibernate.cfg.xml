@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
     <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
     <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
     <property name="hibernate.connection.username">tunglam</property>
@@ -15,6 +15,8 @@
     <property name="hibernate.connection.characterEncoding">utf8</property>
     <property name="hibernate.connection.useUnicode">true</property>
     <property name="hibernate.connection.defaultNChar">true</property>
+
+
     <!-- Cấu hình c3p0 trong hibernate -->
     <property name="hibernate.jdbc.batch_size">50</property>
     <property name="connection.poolsize">2000</property>
@@ -22,9 +24,9 @@
     <property name="hibernate.c3p0.max_size">500</property>
     <property name="hibernate.jdbc.batch_versioned_data">true</property>
 
-    <mapping class="Entity.Subject"/>
-    <mapping class="Entity.Teacher"/>
-    <mapping class="Entity.TeacherTimeSheet"/>
+    <mapping class="entity.Subject"/>
+    <mapping class="entity.Teacher"/>
+    <mapping class="entity.TeacherTimeSheet"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->

@@ -1,8 +1,7 @@
-package Services;
+package services;
 
-import Dao.Impl.SubjectDaoImpl;
-import Entity.Subject;
-import Entity.Teacher;
+import dao.Impl.SubjectDaoImpl;
+import entity.Subject;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -121,8 +120,7 @@ public class SubjectService {
 			System.out.println("--------------------------------------------------------");
 			System.out.println("Nhập ID môn học bạn muốn xóa: ");
 			long id = sc.nextLong();
-			Subject deleteSubject = subjectDao.findById(id);
-			subjectDao.delete(deleteSubject);
+			subjectDao.delete(id);
 		}
 
 		public void getInfo(){

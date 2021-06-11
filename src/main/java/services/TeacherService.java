@@ -1,7 +1,7 @@
-package Services;
+package services;
 
-import Dao.Impl.TeacherDaoImpl;
-import Entity.Teacher;
+import dao.Impl.TeacherDaoImpl;
+import entity.Teacher;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -110,8 +110,7 @@ public class TeacherService {
 		System.out.println("--------------------------------------------------------");
 		System.out.println("Nhập ID giáo viên bạn muốn xóa: ");
 		long id = sc.nextLong();
-		Teacher deleteTeacher = teacherDao.findById(id);
-		teacherDao.delete(deleteTeacher);
+		teacherDao.delete(id);
 	}
 
 	public void updateTeacher() {

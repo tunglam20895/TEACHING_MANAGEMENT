@@ -1,5 +1,5 @@
-import Dao.Impl.SubjectDaoImpl;
-import Dao.Impl.TeacherDaoImpl;
+import dao.Impl.SubjectDaoImpl;
+import dao.Impl.TeacherDaoImpl;
 import org.apache.log4j.Logger;
 
 public class MainClass {
@@ -13,5 +13,7 @@ public class MainClass {
 //		teacherDao.getAllTeacher().forEach(System.out::println);
 
 //		teacherDao.findById(1);
+
+
 	}
 }

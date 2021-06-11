@@ -1,8 +1,8 @@
-package Dao.Impl;
+package dao.Impl;
 
-import Dao.ObjectDao;
-import Entity.TeacherTimeSheet;
-import Utils.HibernateUtil;
+import dao.ObjectDao;
+import entity.TeacherTimeSheet;
+import utils.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -59,11 +59,15 @@ public class TeacherTimeSheetDaoImpl implements ObjectDao<TeacherTimeSheet> {
 	}
 
 	@Override
-	public boolean delete(TeacherTimeSheet obj) {
+	public boolean delete(long id) {
+		TeacherTimeSheet teacherTimeSheet = findById(id);
+		if(teacherTimeSheet == null){
+			System.out.println("Không tìm thấy bản kê khai");
+		}
 		try (Session session = HibernateUtil.getSessionFactory().openSession()){
 			transaction = session.getTransaction();
 			transaction.begin();
-			session.delete(obj);
+			session.delete(teacherTimeSheet);
 			transaction.commit();
 			System.out.println("xóa thành công");
 			return true;
