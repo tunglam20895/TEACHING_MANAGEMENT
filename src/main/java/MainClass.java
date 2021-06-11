@@ -13,5 +13,7 @@ public class MainClass {
 //		teacherDao.getAllTeacher().forEach(System.out::println);
 
 //		teacherDao.findById(1);
+
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 	}
 }
